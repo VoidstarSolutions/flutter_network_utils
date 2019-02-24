@@ -62,6 +62,7 @@ public class FlutterNetworkUtilsPlugin implements MethodCallHandler {
       final WifiInfo connectionInfo = mWifiManager.getConnectionInfo();
       if (connectionInfo != null && connectionInfo.getSSID().length() > 0) {
         ssid = connectionInfo.getSSID();
+        ssid = ssid.substring(1,ssid.length() - 1);
       }
     }
     return ssid;

@@ -15,8 +15,8 @@ class FlutterNetworkUtils {
     return bssid;
   }
 
-  static Future<int> get wifiIp async {
-    final int ip = await _channel.invokeMethod('getWifiIP');
+  static Future<String> get wifiIp async {
+    final String ip = await _channel.invokeMethod('getWifiIP');
     return ip;
   }
 }

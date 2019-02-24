@@ -23,21 +23,13 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String ssid, bssid;
-    int a = 0x000000ff;
-    int b = 0x0000ff00;
-    int c = 0x00ff0000;
-    int d = 0xff000000;
+    String ssid, bssid, ip;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       ssid = await FlutterNetworkUtils.wifiSsid;
       bssid = await FlutterNetworkUtils.wifiBssid;
-      int ip = await FlutterNetworkUtils.wifiIp;
-      ip.toUnsigned(64);
-      a = (a & ip);
-      b = (b & ip) >> 8;
-      c = (c & ip) >> 16;
-      d = (d & ip) >> 24;
+      ip = await FlutterNetworkUtils.wifiIp;
+
     } on PlatformException {
       ssid = 'Error Retrieving Network Info';
     }
@@ -50,7 +42,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _ssid = ssid;
       _bssid = bssid;
-      _ip = '$a.$b.$c.$d';
+      _ip = ip;
     });
   }
 

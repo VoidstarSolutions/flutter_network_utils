@@ -32,7 +32,7 @@ public class FlutterNetworkUtilsPlugin implements MethodCallHandler {
   public static void registerWith(Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_network_utils");
     channel.setMethodCallHandler(new FlutterNetworkUtilsPlugin(registrar.context()));
-    if ( isSDKAtLeastP() &&  registrar.activity()
+    if (isSDKAtLeastP() && registrar.activity()
         .checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
       registrar.activity().requestPermissions(new String[] { Manifest.permission.ACCESS_COARSE_LOCATION }, 1);
     }
@@ -57,7 +57,7 @@ public class FlutterNetworkUtilsPlugin implements MethodCallHandler {
 
   private String getCurrentSSID() {
     String ssid = null;
-      NetworkInfo networkInfo = mConnectivityManager.getActiveNetworkInfo();
+    NetworkInfo networkInfo = mConnectivityManager.getActiveNetworkInfo();
     if (networkInfo.isConnected()) {
       final WifiInfo connectionInfo = mWifiManager.getConnectionInfo();
       if (connectionInfo != null && connectionInfo.getSSID().length() > 0) {
@@ -79,15 +79,21 @@ public class FlutterNetworkUtilsPlugin implements MethodCallHandler {
     return bssid;
   }
 
-  private int getCurrentIP() {
+  private String getCurrentIP() {
     int ip = 0;
+    String ipString = null;
     NetworkInfo networkInfo = mConnectivityManager.getActiveNetworkInfo();
     if (networkInfo.isConnected()) {
       final WifiInfo connectionInfo = mWifiManager.getConnectionInfo();
       if (connectionInfo != null) {
         ip = connectionInfo.getIpAddress();
+        int a = 0x000000ff & ip;
+        int b = (0x0000ff00 & ip) >> 8;
+        int c = (0x00ff0000 & ip) >> 16;
+        int d = (0xff000000 & ip) >> 24;
+        ipString = a + "." + b + "." + c + "." + d;
       }
     }
-    return ip;
+    return ipString;
   }
 }

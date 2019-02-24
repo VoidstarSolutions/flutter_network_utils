@@ -1,0 +1,17 @@
+name: flutter_network_utils
+description: Network Utilities for querying basic network information from Android and iOS platforms
+version: 0.0.1
+author: Voidstar Solutions
+homepage: www.voidstarsolutions.com
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: com.voidstar_solutions.flutter_network_utils
+    pluginClass: FlutterNetworkUtilsPlugin

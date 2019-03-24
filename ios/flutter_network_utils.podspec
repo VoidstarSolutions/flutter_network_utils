@@ -3,15 +3,15 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_network_utils'
-  s.version          = '0.0.2'
+  s.version          = '1.0.0'
   s.summary          = 'Small Plugin for querying basic network info on iOS and Android'
   s.description      = <<-DESC
 Small network info query plugin.
                        DESC
-  s.homepage         = 'www.voidstarsolutions.com'
+  s.homepage         = 'http://www.voidstarsolutions.com'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Voidstar Solutions' => 'zach@voidstarsolutions.com' }
-  s.source           = { :path => '.' }
+  s.source           = { :local => '/' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'

@@ -88,10 +88,10 @@ public class FlutterNetworkUtilsPlugin implements MethodCallHandler {
       final WifiInfo connectionInfo = mWifiManager.getConnectionInfo();
       if (connectionInfo != null) {
         ip = connectionInfo.getIpAddress();
-        int a = 0x000000ff & ip;
-        int b = (0x0000ff00 & ip) >> 8;
-        int c = (0x00ff0000 & ip) >> 16;
-        int d = (0xff000000 & ip) >> 24;
+        long a = 0x000000ff & ip;
+        long b = (0x0000ff00 & ip) >> 8;
+        long c = (0x00ff0000 & ip) >> 16;
+        long d = (0xff000000 & ip) >> 24;
         ipString = a + "." + b + "." + c + "." + d;
       }
     }
